@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import Head from "next/head";
 import { StreamingText, useTextBuffer } from "nextjs-openai";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 export default function Home () {
   const nameRef = useRef<HTMLInputElement>(null);
@@ -12,16 +12,6 @@ export default function Home () {
     method: "POST",
     data
   });
-
-  useEffect(
-    () => {
-      const name = nameRef.current?.value;
-      if (typeof name === "string") {
-        setData((data) => ({ ...data, name }));
-      }
-    },
-    []
-  );
 
   const setName = () => {
     const name = nameRef?.current?.value;
